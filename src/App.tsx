@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from "react";
 import './App.css';
+
+const Viewer = React.lazy(() => import("./components/Viewer/Viewer"));
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>wadoRsRoot: 'https://d3t6nz73ql33tx.cloudfront.net/dicomweb'</p>
+      <div className="flex justify-center items-start w-full p-4">
+        <div className="w-[500px] h-[500px]">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Viewer />
+          </Suspense>
+        </div>
+      </div>
     </div>
   );
 }
